@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive electric vehicle market analysis dashboard and story.">
+    <title>EV Market Analysis | Tableau Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script
+      type="module"
+      src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js">
+    </script>
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <a class="brand" href="#top">EV<span>Insights</span></a>
+            <div class="nav-links">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#story">Story</a>
+                <a href="#about">About</a>
+                <a href="{{ workspace_url }}" target="_blank" rel="noopener noreferrer">Tableau Public ↗</a>
+            </div>
+        </nav>
+        <div class="hero-content" id="top">
+            <p class="eyebrow">DATA • TECHNOLOGY • SUSTAINABILITY</p>
+            <h1>Explore the <span>Electric Vehicle</span> Market</h1>
+            <p class="hero-description">
+                Discover EV sales trends, changing technologies, and sustainability insights
+                through interactive Tableau visualizations.
+            </p>
+            <div class="hero-actions">
+                <a class="button primary" href="#dashboard">Explore dashboard</a>
+                <a class="button secondary" href="#story">View data story</a>
+                <a class="button secondary" href="{{ workspace_url }}" target="_blank" rel="noopener noreferrer">Open Tableau Public workspace ↗</a>
+            </div>
+        </div>
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+    </header>
+
+    <main class="container">
+        <section class="intro section" id="about">
+            <div>
+                <p class="eyebrow">PROJECT OVERVIEW</p>
+                <h2>Insights for a changing road ahead</h2>
+            </div>
+            <p class="intro-copy">
+                This web application embeds Tableau Public dashboards and stories inside a
+                Flask website. It makes the EV market analysis easy to explore, share, and
+                understand in a browser without requiring users to open Tableau separately.
+            </p>
+        </section>
+
+        <section class="viz-section section" id="dashboard">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">INTERACTIVE ANALYTICS</p>
+                    <h2>EV Market Analysis Dashboard</h2>
+                </div>
+                <a class="text-link" href="{{ dashboard_url }}" target="_blank" rel="noopener noreferrer">
+                    Open on Tableau Public ↗
+                </a>
+            </div>
+            <p class="section-description">
+                Use the controls inside the visualization to explore the available market,
+                sales, technology, and sustainability data.
+            </p>
+            <div class="viz-frame">
+                <tableau-viz
+                    id="ev-dashboard"
+                    src="{{ dashboard_url }}"
+                    toolbar="bottom"
+                    hide-tabs
+                    device="default"
+                    width="100%"
+                    height="820">
+                </tableau-viz>
+            </div>
+        </section>
+
+        <section class="viz-section section" id="story">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">GUIDED EXPLORATION</p>
+                    <h2>EV Market Analysis Story</h2>
+                </div>
+                <a class="text-link" href="{{ story_url }}" target="_blank" rel="noopener noreferrer">
+                    Open on Tableau Public ↗
+                </a>
+            </div>
+            <p class="section-description">
+                Follow the story points to move through the analysis and see how the findings
+                connect across the different visualizations.
+            </p>
+            <div class="viz-frame">
+                <tableau-viz
+                    id="ev-story"
+                    src="{{ story_url }}"
+                    toolbar="bottom"
+                    hide-tabs
+                    device="default"
+                    width="100%"
+                    height="820">
+                </tableau-viz>
+            </div>
+        </section>
+
+        <section class="tech-section section">
+            <p class="eyebrow">BUILT WITH</p>
+            <h2>Technologies Used</h2>
+            <div class="tech-grid">
+                <article class="tech-card">
+                    <div class="tech-icon">Py</div>
+                    <h3>Python + Flask</h3>
+                    <p>Flask serves the page and passes the Tableau view links to the template.</p>
+                </article>
+                <article class="tech-card">
+                    <div class="tech-icon">HTML</div>
+                    <h3>HTML</h3>
+                    <p>Structures the page and embeds each Tableau visualization.</p>
+                </article>
+                <article class="tech-card">
+                    <div class="tech-icon">CSS</div>
+                    <h3>CSS</h3>
+                    <p>Provides the responsive layout, typography, spacing, and visual theme.</p>
+                </article>
+                <article class="tech-card">
+                    <div class="tech-icon">T</div>
+                    <h3>Tableau Public</h3>
+                    <p>Hosts the interactive dashboard and story for browser-based viewing.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="note">
+            <strong>Note:</strong> The Tableau views must be published and accessible on Tableau
+            Public for visitors to see them. If a visualization does not load, open its Tableau
+            Public link above and check its sharing or embedding permissions.
+        </section>
+    </main>
+
+    <footer>
+        <p>EV Insights · Tableau Public + Flask</p>
+        <p>Interactive analysis of EV market trends, technology, and sustainability.</p>
+    </footer>
+</body>
+</html>
